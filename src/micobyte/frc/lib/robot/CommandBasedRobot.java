@@ -46,8 +46,13 @@ public abstract class CommandBasedRobot extends BasicRobot {
 		}
 	}
 	
-	public void autonomousPeriodic() { super.autonomousPeriodic(); Scheduler.getInstance().run(); }
-	public void teleopPeriodic() { super.teleopPeriodic(); Scheduler.getInstance().run(); }
-	public void disabledPeriodic() { super.disabledPeriodic(); Scheduler.getInstance().run(); }
-	public void testPeriodic() { super.testPeriodic(); Scheduler.getInstance().run(); }
+	/**
+	 * Runs the {@link Scheduler}, so that {@link Command}s may run
+	 */
+	public void runScheduler() { Scheduler.getInstance().run(); }
+	
+	public void autonomousPeriodic() { super.autonomousPeriodic(); runScheduler(); }
+	public void teleopPeriodic() { super.teleopPeriodic(); runScheduler(); }
+	public void disabledPeriodic() { super.disabledPeriodic(); runScheduler(); }
+	public void testPeriodic() { super.testPeriodic(); runScheduler(); }
 }
