@@ -80,4 +80,6 @@ public abstract class SubsystemSerial extends Subsystem {
 		connection.writeString(toSend + "\n");
 		connection.flush();
 	}
+	
+	public void initDefaultCommand() {}
 }
